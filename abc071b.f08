@@ -1,5 +1,5 @@
 program main
-    character :: c*(10**5)
+    character (10**5) :: c
     character(10**5) :: ch
     character :: anser(26)
     integer :: word(26) = 0
@@ -7,12 +7,12 @@ program main
     do i = 1, 26
         anser(i) = achar(iachar('a')+i-1)
     end do
-
-    read(5, '(a)') c
+    
+    read *, c
     max_array = len(trim(c))
-    ch = trim(c)
+    c = trim(c)
     do i=1,max_array
-        a = iachar(ch(i:i)) - iachar('a') + 1
+        a = iachar(c(i:i)) - iachar('a') + 1
         word(a) = 1
     end do
 
