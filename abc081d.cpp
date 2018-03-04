@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <algorithm>
+#include <cmath>
 using namespace std;
 
 int main(){
@@ -15,28 +16,38 @@ int main(){
         b[i] = a[i];
     }
     sort(b,b+n);
-    max = b[n-1];
+    if(abs(b[n-1]) > abs(b[0])) max = b[n-1];
+    else max = b[0];
     for(int i = 0; i < n; i++){
         if(a[i] == max){
-            maxnum = i;
+            maxnum = i + 1;
             break;
         }
     }
-    for(int i = 1; i < n; i++){
-        while(a[i-1] > a[i]){
-            a[i] += max;
-            quex.push(maxnum);
-            quey.push(i);
-            ansnum++;
-            if(max < a[i]) {
-                max = a[i];
-                maxnum = i;
-            }
+    for(int i = 0; i < n; i++){
+        if(max >= 0){
+                quey.push(i+1);
+                quex.push(maxnum);
+        }else{
+                quey.push(n-i);
+                quex.push(maxnum);
         }
+        ansnum++;
+    }
+    for(int i = 0; i < n-1; i++){
+        if(max > 0){
+            quey.push(i+2);
+            quex.push(i+1);
+        }
+        else{
+            quey.push(n-i-1);     
+            quex.push(n-i);
+        }
+        ansnum++;
     }
 
     cout << ansnum << '\n';
-    while(quex.size()){
+    while(quey.size()){
         cout << quex.front() << ' ' << quey.front() << '\n';
         quex.pop();quey.pop();
     }
