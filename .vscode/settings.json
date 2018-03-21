@@ -35,6 +35,8 @@
         "sstream": "cpp",
         "thread": "cpp",
         "tuple": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "chrono": "cpp",
+        "complex": "cpp"
     }
 }
