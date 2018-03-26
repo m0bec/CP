@@ -1,71 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 bool SecondCompare(const pair<int,int> &a,const pair<int,int> &b)
 {
        return a.second<b.second;
 }
-
+ 
 bool SecondCompareDes(const pair<int,int> &a,const pair<int,int> &b)
 {
        return a.second>b.second;
 }
-
-int n;
-long long a[200000], b[200000];
+ 
+int a,b;
+char tree[100][100];
 
 int main(){
-    cin >> n;
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
+    cin >> a >> b;
+    cout << 100 << ' ' << 100 << endl;
+    
+    for(int i = 0; i < 50; i++){
+        for(int j = 0; j < 100; j++)    tree[i][j] = '.';
     }
-    for(int i = 0; i < n; i++){
-        cin >> b[i];
+    for(int i = 50; i< 100; i++){
+        for(int j = 0; j < 100; j++)    tree[i][j] = '#';
     }
-    int c = 0, memc = 0;
-    for(int i = 0; i < n-1; i++){
-        if(a[i] == a[i+1]){
-            ++c;
-        }
-        else{
-            if(c != 0){
-                for(int j = 0; j < c; j++){
-                    a[i-j] = 268435456 + 1;
-                    memc += c;
-                    c = 0;
-                }
-            }
+    --a;
+    --b;
+    for(int i = 0; i < 50; i += 2){
+        for(int j = 0; j < 100; j += 2){
+            if(b == 0)  break;
+            tree[i][j] = '#';
+            --b;
         }
     }
-    if(c != 0){
-                for(int j = 0; j < c; j++){
-                    a[i-j] = 268435456 + 1;
-                    memc += c;
-                    c = 0;
-                }
-            }
-    sort(a, a+n);
-    int memb = 0
-    for(int i = 0; i < n-1; i++){
-        if(b[i] == b[i+1]){
-            ++c;
-        }
-        else{
-            if(c != 0){
-                for(int j = 0; j < c; j++){
-                    a[i-j] = 268435456 + 1;
-                    memb += c;
-                    c = 0;
-                }
-            }
+
+    for(int i = 51; i < 100; i += 2){
+        for(int j = 0; j < 100; j += 2){
+            if(a == 0)  break;
+            tree[i][j] = '.';
+            --a;
         }
     }
-    if(c != 0){
-                for(int j = 0; j < c; j++){
-                    a[i-j] = 268435456 + 1;
-                    memb += c;
-                    c = 0;
-                }
-            }
-    sort(b, b+n);
+
+    for(int i = 0; i < 100; i++){
+        for(int j = 0; j < 100; j++){
+            printf("%c", tree[i][j]);
+        }
+        cout << '\n';
+    }
 }
