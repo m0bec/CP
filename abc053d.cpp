@@ -11,15 +11,17 @@ bool SecondCompareDes(const pair<int,int> &a,const pair<int,int> &b)
        return a.second>b.second;
 }
  
-long long x;
-long long ans;
+int n;
+int a[100001];
+int c;
 int main(){
-    cin >> x;
-    ans = x/11;
-    ans*= 2;
-    if(x%11 != 0){
-        if(x%11 <= 6)   ++ans;
-        else ans += 2;
+    cin >> n;
+    for(int i = 0; i < n; i++)  cin >> a[i];
+    sort(a, a+n);
+
+    for(int i = 1; i < n; i++){
+        if(a[i] == a[i-1])   ++c;
     }
-    cout << ans << endl;
+    if(c%2 != 0)    ++c;
+    cout << n-c << endl;
 }
