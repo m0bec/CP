@@ -37,6 +37,7 @@
         "tuple": "cpp",
         "valarray": "cpp",
         "chrono": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "ratio": "cpp"
     }
 }
