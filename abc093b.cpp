@@ -18,9 +18,16 @@ bool SecondCompareDes(const pair<int,int> &a,const pair<int,int> &b)
        return a.second>b.second;
 }
  
-int n, a, b;
+ll n, a, b, k;
 string s;
 
 int main(){
-    
+    cin  >> a >> b >> k;
+    for(ll i = a; i < a+k; i++){
+        if(i > b)  break;
+        cout << i << '\n';
+    }
+    for(ll i = b-k+1; i <= b; i++){
+        if(i >= a+k) cout << i << '\n';
+    }
 }

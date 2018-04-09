@@ -20,7 +20,17 @@ bool SecondCompareDes(const pair<int,int> &a,const pair<int,int> &b)
  
 int n, a, b;
 string s;
-
+int are[100];
 int main(){
-    
+    cin >> s;
+    for(int i = 0; i < s.length(); i++){
+        are[s[i]-'a']++;
+    }
+    for(int i = 0; i < 3; i++){
+        if(are[i] != 1){
+            cout << "No\n";
+            return 0;
+        }
+    }
+    cout << "Yes\n";
 }
