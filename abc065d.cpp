@@ -113,6 +113,15 @@ int main(){
             unite(e.u, e.v);
             res += e.cost;
         }
+    }sort(es, es+2*n-2, comp_c);
+    init_union_find(n);
+    int res = 0;
+    for(int i = 0; i < 2*n-2; i++){
+        edge e = es[i];
+        if(!same(e.u, e.v)){
+            unite(e.u, e.v);
+            res += e.cost;
+        }
     }
     cout << res << endl;
 
