@@ -51,6 +51,7 @@ int main(){
             }
         }
     }
+
     double ca = ans;
     for(int i = 0; i < 4; i++)  ca/= 365.0;
     cout << ca << endl;
