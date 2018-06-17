@@ -2,8 +2,8 @@
 using namespace std;
 typedef long long ll;
  
-int are[400];
-int mem[400*400];
+ll are[400];
+ll mem[400*400];
 ll ans;
 
 int main(){
@@ -39,15 +39,15 @@ int main(){
         for(int j = 0; j < c; j++){
             if(binary_search(mem,mem+cmem,are[i]-are[j]-1)){
                 // 1 = a1-a2-a3-a4 => a2+a3 = a1-a4-1
-                ans += upper_bound(mem,mem+cmem,are[i]-are[j]-1) - lower_bound(mem,mem+cmem,are[i]-are[j]-1);
+                ans += (upper_bound(mem,mem+cmem,are[i]-are[j]-1) - lower_bound(mem,mem+cmem,are[i]-are[j]-1))*1LL;
             }
             if(binary_search(mem,mem+cmem,-are[i]+are[j]+1)){
                 // 1 = a1+a2+a3-a4 => -a2-a3 = a1-a4-1 => a2+a3 = -a1+a4+1
-                ans += upper_bound(mem,mem+cmem,-are[i]+are[j]+1) - lower_bound(mem,mem+cmem,-are[i]+are[j]+1);
+                ans += (upper_bound(mem,mem+cmem,-are[i]+are[j]+1) - lower_bound(mem,mem+cmem,-are[i]+are[j]+1))*1LL;
             }
             if(binary_search(mem,mem+cmem,are[i]+are[j]+1)){
                 // 1 = a1+a2-a3-a4 => a3+a4+1 = a1+a2 => a1+a2 = a3+a4+1
-                ans += upper_bound(mem,mem+cmem,are[i]+are[j]+1) - lower_bound(mem,mem+cmem,are[i]+are[j]+1);
+                ans += (upper_bound(mem,mem+cmem,are[i]+are[j]+1) - lower_bound(mem,mem+cmem,are[i]+are[j]+1))*1LL;
             }
         }
     }
