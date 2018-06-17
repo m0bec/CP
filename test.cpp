@@ -2,25 +2,57 @@
 using namespace std;
 typedef long long ll;
  
-char ma[100][100];
-bool f[100][100];
-int dx[4] = {1,0,-1,0}, dy[4] = {0,1,-1,0};
-pair<int, int> p;
+int are[400];
+int mem[400*400];
+ll ans;
 
 int main(){
-    for(int i = 0; i < 100; i++){
-        for(int j = 0; j < 100; j++){
-            ma[i][j] = '1';
+    int c = 0;
+    for(int i = 1; i <= 12; i++){
+        for(int j = 1; j <= 30; j++){
+            if(i == 2 && j > 28)    break;
+            are[c] = i*100+j;
+            ++c;
+        }
+    }
+    for(int i = 1; i <= 7; i+=2){
+        are[c] = i*100+31;
+        ++c;
+    }
+    for(int i = 8; i <= 12; i+=2){
+        are[c] = i*100+31;
+        ++c;
+    }
+
+
+    int cmem = 0;
+    for(int i = 0; i < c; i++){
+        for(int j = 0; j < c; j++){
+            mem[cmem] = are[i]+are[j];
+            ++cmem;
         }
     }
 
-    queue<pair<int, int>> que;
-    p.first = 0;
-    p.second = 0;
-    que.push(p);
+    sort(mem,mem+cmem);
 
-    while(que.size()){
-        
+    for(int i = 0; i < c; i++){
+        for(int j = 0; j < c; j++){
+            if(binary_search(mem,mem+cmem,are[i]-are[j]-1)){
+                // 1 = a1-a2-a3-a4 => a2+a3 = a1-a4-1
+                ans += upper_bound(mem,mem+cmem,are[i]-are[j]-1) - lower_bound(mem,mem+cmem,are[i]-are[j]-1);
+            }
+            if(binary_search(mem,mem+cmem,-are[i]+are[j]+1)){
+                // 1 = a1+a2+a3-a4 => -a2-a3 = a1-a4-1 => a1+a2 = -a1+a4+1
+                ans += upper_bound(mem,mem+cmem,-are[i]+are[j]+1) - lower_bound(mem,mem+cmem,-are[i]+are[j]+1);
+            }
+            if(binary_search(mem,mem+cmem,are[i]+are[j]+1)){
+                // 1 = a1+a2-a3-a4 => a3+a4+1 = a1+a2 => a1+a2 = a3+a4+1
+                ans += upper_bound(mem,mem+cmem,are[i]+are[j]+1) - lower_bound(mem,mem+cmem,are[i]+are[j]+1);
+            }
+        }
     }
-
+    double ca = ans;
+    cout << ca << endl;
+    for(int i = 0; i < 4; i++)  ca/= 365.0;
+    cout << ca << endl;
 }
