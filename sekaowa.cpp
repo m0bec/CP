@@ -42,7 +42,7 @@ int main(){
                 ans += upper_bound(mem,mem+cmem,are[i]-are[j]-1) - lower_bound(mem,mem+cmem,are[i]-are[j]-1);
             }
             if(binary_search(mem,mem+cmem,-are[i]+are[j]+1)){
-                // 1 = a1+a2+a3-a4 => -a2-a3 = a1-a4-1 => a1+a2 = -a1+a4+1
+                // 1 = a1+a2+a3-a4 => -a2-a3 = a1-a4-1 => a2+a3 = -a1+a4+1
                 ans += upper_bound(mem,mem+cmem,-are[i]+are[j]+1) - lower_bound(mem,mem+cmem,-are[i]+are[j]+1);
             }
             if(binary_search(mem,mem+cmem,are[i]+are[j]+1)){
@@ -52,7 +52,6 @@ int main(){
         }
     }
     double ca = ans;
-    cout << ca << endl;
     for(int i = 0; i < 4; i++)  ca/= 365.0;
     cout << ca << endl;
 }
