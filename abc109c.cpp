@@ -18,30 +18,32 @@ bool SecondCompareDes(const pair<ll,ll> &a,const pair<ll,ll> &b)
 }
 
 
-int n;
-string w[110];
+int gcd(int m, int n){
+	if(n == 0){
+		return m;
+	}
+	else{
+		gcd(n,m%n);
+	}
+}
+int n,x;
+int xx[100010];
 
 int main(){
-    cin >> n;
+    cin >> n >> x;
+
     for(int i = 0; i < n; i++){
-        cin >> w[i];
+        cin >> xx[i];
+        xx[i] = max(xx[i]-x,x-xx[i]);
     }
 
-    for(int i = 1; i < n; i++){
-        if(w[i-1][w[i-1].length()-1] != w[i][0]){
-            cout << "No\n";
-            return 0;
+    int mo;
+    mo = gcd(xx[0],xx[1]);
+    for(int i = 0; i < n; i++){
+        if(xx[i]%mo != 0){
+            mo = gcd(mo,xx[i]);
         }
     }
 
-    for(int i = 0; i < n; i++){
-        for(int j = i+1; j < n; j++){
-            if(w[i] == w[j]){
-                cout << "No\n";
-                return 0;
-            }
-        }
-    }
-
-    cout << "Yes\n";
+    cout << mo << endl;
 }
