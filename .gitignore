@@ -27,3 +27,5 @@
 *.out
 *.app
 *.json
+*.txt
+/HackToTheFuture

@@ -8,7 +8,7 @@ typedef pair<ll, ll> Pl;
 const int INT_INF = 2147483646;
 const ll LL_INF = 9223372036854775807;
 
-const int TEST = 100;
+const int TEST = 1;
 int L,R,N,M;
 char S[501][301],ans[30][30][TEST+1];
 
@@ -45,12 +45,13 @@ int main(){
 
     ofstream ofs("./HackToTheFuture/test.data");
     ofstream ofs2("./HackToTheFuture/output.dat");
+    ofstream ofs3("./HackToTheFuture/root.dat");
 //keiro
-    pos now_pos,next_pos;
+    pos now_pos;
     for(int ii = 0; ii < TEST; ii++){
     int loop = 0;
     for(int i = 0; i < N; i++){
-        now_pos.x = now_pos.y = next_pos.x = next_pos.y = 14;
+        now_pos.x = now_pos.y = 14;
         move_dir = 0;
         for(int j = 0; j < L; j++){
             if(S[i][j] == 'S'){
@@ -68,11 +69,13 @@ int main(){
                     ++move_dir;
                     if(move_dir == 4)  move_dir = 0;
             }
+            ofs3 << i << ' ' << now_pos.x << ' ' << now_pos.y << ' ' << S[i][j] << ' ' << move_dir<< endl;
 
         }
-
                     
         ++cou[now_pos.x][now_pos.y][ii];
+        //ofs3 << i << ' ' << now_pos.x << ' ' << now_pos.y << endl;
+        if(now_pos.x == 22 && now_pos.y == 1)   cout <<"out:"<< i << endl;
     }
 
     mem_max = 0;
@@ -111,11 +114,11 @@ int main(){
     int test_ = 0;
     for(int i = 0; i < M; i++){
         for(int j = 0; j < M; j++){
-            ofs << cou[i][j][max_score_num] << ' ';
+            ofs << i << ' ' << j << ' ' << cou[i][j][max_score_num] << endl;
             test_ += cou[i][j][max_score_num];
           ofs2 << ans[i][j][max_score_num];
         }
-        ofs << endl;
+//        ofs << endl;
         ofs2 << endl;
     }
     cout << test_ << endl;
