@@ -63,5 +63,6 @@
         "mutex": "cpp",
         "scoped_allocator": "cpp",
         "typeindex": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
