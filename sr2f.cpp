@@ -30,14 +30,30 @@ ll maxll(ll a, ll b){
 
 const int SIZE = 2e5;
 int n;
-ll a[SIZE],b[SIZE];
+pair<ll,ll> a[SIZE];
 
 int main(){
-cin >> n;
+    cin >> n;
+    ll tmp1,tmp2;
     for(int i = 0; i < n; i++){
-        cin >> a[i] >> b[i];
+        cin >> a[i].first >> a[i].second;
+        tmp1 = max(a[i].first,a[i].second);
+        tmp2 = min(a[i].first,a[i].second);
+        a[i].first = tmp1;
+        a[i].second = tmp2;
     } 
-    for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
+
+    ll ans = 1;
+
+    sort(a,a+n);
+
+    for(int i = 1; i < n; i++){
+        if(a[i] != a[i-1]){
+            ++ans;
+        }
+
     }
+
+    cout << ans << endl;
+    
 }

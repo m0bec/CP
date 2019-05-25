@@ -33,11 +33,18 @@ int n;
 ll a[SIZE],b[SIZE];
 
 int main(){
-cin >> n;
+    ll tmp1,tmp2;
+    cin >> n;
     for(int i = 0; i < n; i++){
         cin >> a[i] >> b[i];
     } 
+
+    ll ans = 0;
+
     for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
+        ans = max(a[i],b[i]) - min(a[i],b[i]);
+        if(ans == 0)    ans = -1;
+        cout << ans << endl;
     }
+    
 }

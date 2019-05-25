@@ -28,4 +28,6 @@
 *.app
 *.json
 *.txt
+*.ipch
+*.bin
 /HackToTheFuture

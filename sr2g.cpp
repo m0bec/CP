@@ -28,16 +28,35 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
+ll gcd(ll a, ll b){
+    ll tmp;
+    if(a%b == 0){
+        return b;
+    }
+    else{
+        return gcd(b, a%b);
+    }
+}
+
 const int SIZE = 2e5;
 int n;
 ll a[SIZE],b[SIZE];
 
 int main(){
-cin >> n;
+    ll tmp1,tmp2;
+    cin >> n;
     for(int i = 0; i < n; i++){
         cin >> a[i] >> b[i];
+        tmp1 = max(a[i],b[i]);
+        tmp2 = min(a[i],b[i]);
+        a[i] = tmp1;
+        b[i] = tmp2;
     } 
+
+    ll ans = 0;
+
     for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
+        cout << gcd(a[i],b[i]) << endl;
     }
+    
 }

@@ -28,16 +28,8 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-const int SIZE = 2e5;
-int n;
-ll a[SIZE],b[SIZE];
+
 
 int main(){
-cin >> n;
-    for(int i = 0; i < n; i++){
-        cin >> a[i] >> b[i];
-    } 
-    for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
-    }
+    
 }

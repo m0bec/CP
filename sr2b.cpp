@@ -38,6 +38,6 @@ cin >> n;
         cin >> a[i] >> b[i];
     } 
     for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
+        cout << a[i]%b[i] << endl;
     }
 }

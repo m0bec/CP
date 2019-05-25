@@ -117,3 +117,13 @@ ll combination(ll n, ll k){
 }
 
 //-------------------------------------------------------------
+
+ll gcd(ll a, ll b){
+    ll tmp;
+    if(a%b == 0){
+        return b;
+    }
+    else{
+        return gcd(b, a%b);
+    }
+}

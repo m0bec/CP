@@ -33,11 +33,14 @@ int n;
 ll a[SIZE],b[SIZE];
 
 int main(){
-cin >> n;
+    cin >> n;
     for(int i = 0; i < n; i++){
         cin >> a[i] >> b[i];
+        a[i] += b[i];
     } 
-    for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
-    }
+
+    sort(a,a+n);
+
+    cout << a[n-1] << endl;
+    
 }

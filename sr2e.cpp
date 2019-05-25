@@ -33,11 +33,15 @@ int n;
 ll a[SIZE],b[SIZE];
 
 int main(){
-cin >> n;
+    cin >> n;
     for(int i = 0; i < n; i++){
         cin >> a[i] >> b[i];
     } 
-    for(int i = 0; i < n; i++){
-        cout << a[i]*b[i] << endl;
-    }
+
+    ll ans = 0;
+
+    for(int i = 0; i < n; i++) ans += min(a[i]/2,b[i]);
+
+    cout << ans << endl;
+    
 }
