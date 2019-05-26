@@ -28,14 +28,12 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll a,b;
+ll r,d,x;
 
 int main(){
-    ll ans;
-    cin >> a >>b;
-    if(a >= 13) ans = b;
-    else if(a >= 6) ans = b/2;
-    else ans = 0;
-
-    cout << ans << endl;
+    cin >> r >> d >> x;
+    for(int i = 0; i < 10; i++){
+        cout << r*x-d << endl;
+        x = r*x-d;
+    }
 }

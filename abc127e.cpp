@@ -28,14 +28,17 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll a,b;
+ll n,m,k;
+ll zahyo[]
+const ll mo = 1e9+7;
+
+ll check(ll a){
+    if(a > mo)   a %= mo;
+    return a;
+}
 
 int main(){
-    ll ans;
-    cin >> a >>b;
-    if(a >= 13) ans = b;
-    else if(a >= 6) ans = b/2;
-    else ans = 0;
+    cin >> n >> m >> k;
 
-    cout << ans << endl;
+    for(int i )
 }

@@ -28,14 +28,21 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll a,b;
+ll n,m;
+const ll SIZE = 1e5+10;
+ll l[SIZE],r[SIZE];
 
 int main(){
-    ll ans;
-    cin >> a >>b;
-    if(a >= 13) ans = b;
-    else if(a >= 6) ans = b/2;
-    else ans = 0;
+    ll lef = 0, rig = LL_INF;
+    cin >> n >> m;
+    for(int i = 0; i < m; i++){
+        cin >> l[i] >> r[i];
+        lef = max(l[i],lef);
+        rig = min(r[i],rig);
+    }
 
+    ll ans = rig-lef;
+    if(ans < 0) ans = 0;
+    else    ans++;
     cout << ans << endl;
 }
