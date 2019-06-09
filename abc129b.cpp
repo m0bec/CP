@@ -28,10 +28,8 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll n;
+
 
 int main(){
-    cin >> n;
 
-    cout << (n-2) * 180 << endl;
 }

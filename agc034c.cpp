@@ -28,10 +28,20 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll n;
+ll n,x;
+const int SIZE = 1e5+10;
+ll b[SIZE],l[SIZE],u[SIZE];
 
 int main(){
-    cin >> n;
+    cin >> n >> x;
+    ll mem_l_max = 0;
+    ll mem_sum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> b[i] >> l[i] >> u[i];
+        mem_sum += b[i]*l[i];
+        mem_l_max = max(u[i],mem_l_max);
+    }
 
-    cout << (n-2) * 180 << endl;
+    cout << mem_sum << ' ' << mem_sum/mem_l_max << endl;
+    
 }

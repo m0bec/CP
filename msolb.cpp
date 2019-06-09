@@ -28,10 +28,19 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll n;
+string s;
 
 int main(){
-    cin >> n;
+    cin >> s;
 
-    cout << (n-2) * 180 << endl;
+    ll co = 0;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] == 'x') ++co;
+    }
+    if(co >= 8) cout << "NO\n";
+    else
+    {
+        cout << "YES\n";
+    }
+    
 }

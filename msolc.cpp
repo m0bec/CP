@@ -29,9 +29,29 @@ ll maxll(ll a, ll b){
 }
 
 ll n;
+double a,b,c;
+double ans;
+double aa[100010], bb[100010];
 
 int main(){
-    cin >> n;
+    cin >> n >> a >> b >> c;
 
-    cout << (n-2) * 180 << endl;
+    a /= 100.0;
+    b /= 100.0;
+    c /= 100.0;
+    //A
+    for(int i = 1; i <= n; i++){
+        aa[i] = (i-1) + (  (pow(a,i) / (b+c)) * ((b+c) / ((1.0-b-c)*(1.0-b-c))) );
+        //cout << aa[i] << endl;
+    }
+    for(int i = 1; i <= n; i++){
+        bb[i] = (i-1) + (  (pow(b,i) / (a+c)) * ((a+c) / ((1.0-a-c)*(1.0-a-c))) );
+    }
+
+    for(int i = 0; i < n; i++){
+        ans += aa[n]+bb[i];
+        ans += bb[n]+aa[i];
+    }
+
+    cout << static_cast<ll>(ans) << endl;
 }
