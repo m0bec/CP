@@ -28,8 +28,17 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-
+ll p[3];
 
 int main(){
+    cin >> p[0] >> p[1] >> p[2];
+
+    ll ans = LL_INF;
+    for(int i = 0; i < 3; i++){
+        for(int j = i+1; j < 3; j++){
+            if(ans > p[i]+p[j])ans = p[i]+p[j];
+        }
+    }
+    cout << ans << endl;
 
 }

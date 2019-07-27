@@ -28,8 +28,24 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-
+ll n;
+ll w[110];
+ll mem_sum;
 
 int main(){
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        cin >> w[i];
+        mem_sum += w[i];
+    }
 
+
+    ll ans = LL_INF;
+    ll mem = 0;
+    for(int i = 0; i < n; i++){
+        mem += w[i];
+        if(ans > abs(mem_sum - 2*mem))   ans = abs(mem_sum - 2*mem);
+    }
+
+    cout << ans << endl;
 }

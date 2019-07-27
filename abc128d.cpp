@@ -28,39 +28,54 @@ ll maxll(ll a, ll b){
     else    return b;
 }
 
-ll k,n;
-ll v[100],v2[100];
+ll n,k;
+const int SIZE = 100+10;
+ll v[SIZE];
+ll mem_arr[SIZE],r_sum[SIZE],l_sum[SIZE];
 ll ans;
-void solve(ll ge, ll pa){
-    solve(ge-2,pa+1);
-    if(ge <= 0 || pa >= n) return;
-    ll tmp;
-    for(int i = 0; i < max(ge+pa,n); i++){
-        tmp = 0;
-        for(int j = 0; j < ge-i; j++){
-            v2[j] = v[j];
+
+void solve(ll dust_num, ll in_num){
+    ll tmp_ans;
+    if(in_num > n)  in_num = n;
+    for(int r_num = 0; r_num <= in_num; r_num++){
+        int l_num = in_num-r_num;
+        tmp_ans = 0;
+        for(int i = 0; i < r_num; i++){
+            mem_arr[i] = v[i];
+            tmp_ans += v[i];
         }
-        for(int j = ge; j < ge+pa+i; j++){
-            v2[j] = v[n-1-j];
+        for(int i = 0; i < l_num; i++){
+            mem_arr[r_num+i] = v[n-1-i];
+            tmp_ans += v[n-1-i];
         }
-        sort(v2,v2+ge+pa);
-        for(int j = pa; j < ge+pa; j++){
-            tmp += v2[j];
-            v2[j] = 0;
+        sort(mem_arr,mem_arr+in_num);
+        for(int i = 0; i < dust_num; i++){
+            if(mem_arr[i] < 0)  tmp_ans -= mem_arr[i];
+            else    break;
         }
-        ans = max(ans,tmp);
+
+       // cout << r_num << ' ' << l_num << ' ' << tmp_ans << endl;
+        ans = max(ans,tmp_ans);
     }
-    return;
 }
+
 
 int main(){
     cin >> n >> k;
     for(int i = 0; i < n; i++){
         cin >> v[i];
-        //v[i] += v[i-1];
+        r_sum[i] += v[i];
     }
 
-    solve(k,0);
-    
+    for(int i = 0; i < n; i++){
+        l_sum[i] += v[n-1-i];
+    }
+
+    ll score = 0, l_pos = 0, r_pos = n-1;
+
+    for(int i = 0; i <= k/2; i++){
+        solve(i,k-i);
+    }
+
     cout << ans << endl;
 }
